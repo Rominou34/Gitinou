@@ -1,0 +1,53 @@
+html, body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#cont {
+  width: 100%;
+  padding: 20px 0px;
+  background-color: #ecf0f1;
+  margin: 40px 0;
+}
+
+#cont span {
+  margin: 0;
+}
+
+pre {
+  margin: 0;
+}
+
+.addition {
+  background-color: #bfe4c3;
+  color: #194612;
+}
+
+.deletion {
+  background-color: #ecc3c3;
+  color: #501712;
+}
+
+.file-block {
+  margin: 40px 0;
+  background-color: #dce0e1;
+  width: 100%;
+  box-sizing: border-box;
+  border-left: 4px solid #888;
+}
+
+.file-title {
+  font-size: 24px;
+  font-family: Arial;
+  text-align: center;
+  padding: 8px 0;
+  width: 100%;
+}
+
+pre p {
+  margin: 0;
+  color: #072762;
+  padding-left: 8px;
+}
