@@ -4,14 +4,27 @@ window.onload = function() {
     cont.innerHTML += escapeHtml(data.files[i].patch);
   }*/
   for(var i in data.files) {
+    // The block that will contain everything concerning the commit
     var block = document.createElement("div");
     block.classList.add("file-block");
+
+    // The title of the box ( name of the file )
     var title = document.createElement("div");
     title.classList.add("file-title");
     title.innerHTML = data.files[i].filename;
     block.appendChild(title);
     cont.appendChild(block);
-    displayDiff(block, data.files[i].patch);
+
+    // The block used for overflow: scroll
+    var blockT = document.createElement("div");
+    blockT.classList.add("scrollBlock");
+    block.appendChild(blockT);
+
+    var commitCode = document.createElement("div");
+    commitCode.classList.add("codeBlock");
+    blockT.appendChild(commitCode);
+    
+    displayDiff(commitCode, data.files[i].patch);
 
   }
 
@@ -52,6 +65,7 @@ function displayDiff(el, patch) {
       cursor = false;
       el.appendChild(text);
       text = document.createElement("p");
+
       // If this line is an addition we put the line number and put it green
       if(patch[(j+1)] == "+") {
         text.classList.add("addition");

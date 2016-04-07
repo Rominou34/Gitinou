@@ -12,30 +12,47 @@ html, body {
   margin: 40px 0;
 }
 
-#cont span {
+div {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 pre {
   margin: 0;
 }
 
+pre p {
+  margin: 0;
+  color: #072762;
+  padding-left: 8px;
+  border-left: 3px solid #6b7382;
+  background-color: #d1d8e9;
+  min-width: 100%;
+  width: auto;
+}
+
 .addition {
   background-color: #bfe4c3;
   color: #194612;
+  border-color: #14ad2c;
 }
 
 .deletion {
   background-color: #ecc3c3;
   color: #501712;
+  border-color: #be1d1d;
 }
 
 .file-block {
-  margin: 40px 0;
-  background-color: #dce0e1;
-  width: 100%;
+  margin: 40px auto;
+  background-color: #ecf0f1;
+  width: 90%;
+  max-width: 1024px;
   box-sizing: border-box;
-  border-left: 4px solid #888;
+  box-shadow: 0px 0px 4px 0px #444;
+  border-radius: 2px;
+  padding-bottom: 12px;
 }
 
 .file-title {
@@ -44,10 +61,17 @@ pre {
   text-align: center;
   padding: 8px 0;
   width: 100%;
+  background-color: #272930;
+  color: #ecf0f1;
+  margin-bottom: 12px;
 }
 
-pre p {
-  margin: 0;
-  color: #072762;
-  padding-left: 8px;
+.scrollBlock {
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.codeBlock {
+  display: inline-block;
+  min-width: calc(100% - 11px);
 }
