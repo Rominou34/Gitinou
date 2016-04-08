@@ -5,11 +5,19 @@ html, body {
   padding: 0;
 }
 
-#cont {
+header {
+  color: #ecf0f1;
+  background-color: #24479f;
+  font-family: Arial;
+  font-size: 32px;
+  text-align: center;
+  padding: 12px 0;
+}
+
+#content {
   width: 100%;
   padding: 20px 0px;
   background-color: #ecf0f1;
-  margin: 40px 0;
 }
 
 div {
@@ -27,13 +35,13 @@ pre p {
   color: #072762;
   padding-left: 8px;
   border-left: 3px solid #6b7382;
-  background-color: #d1d8e9;
+  background-color: #dee3ee;
   min-width: 100%;
   width: auto;
 }
 
 .addition {
-  background-color: #bfe4c3;
+  background-color: #b1e3b6;
   color: #194612;
   border-color: #14ad2c;
 }
@@ -52,7 +60,6 @@ pre p {
   box-sizing: border-box;
   box-shadow: 0px 0px 4px 0px #444;
   border-radius: 2px;
-  padding-bottom: 12px;
 }
 
 .file-title {
@@ -63,7 +70,6 @@ pre p {
   width: 100%;
   background-color: #272930;
   color: #ecf0f1;
-  margin-bottom: 12px;
 }
 
 .scrollBlock {
@@ -74,4 +80,5 @@ pre p {
 .codeBlock {
   display: inline-block;
   min-width: calc(100% - 11px);
+  padding: 12px 0;
 }

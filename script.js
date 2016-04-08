@@ -1,5 +1,5 @@
 window.onload = function() {
-  var cont = document.querySelector("#cont");
+  var cont = document.querySelector("#content");
   /*for(var i in data.files) {
     cont.innerHTML += escapeHtml(data.files[i].patch);
   }*/
@@ -11,7 +11,21 @@ window.onload = function() {
     // The title of the box ( name of the file )
     var title = document.createElement("div");
     title.classList.add("file-title");
-    title.innerHTML = data.files[i].filename;
+
+    // Deletions
+    var delSpan = document.createElement("span");
+    delSpan.innerHTML = "-" + data.files[i].deletions;
+    delSpan.style.color = "#cc4a45";
+    title.appendChild(delSpan);
+
+    title.innerHTML += " " + data.files[i].filename + " ";
+
+    // Additions
+    var addSpan = document.createElement("span");
+    addSpan.innerHTML = "+" + data.files[i].additions;
+    addSpan.style.color = "#32c638";
+    title.appendChild(addSpan);
+
     block.appendChild(title);
     cont.appendChild(block);
 
@@ -20,10 +34,13 @@ window.onload = function() {
     blockT.classList.add("scrollBlock");
     block.appendChild(blockT);
 
+    var commitCodePre = document.createElement("pre");
+    blockT.appendChild(commitCodePre);
+
     var commitCode = document.createElement("div");
     commitCode.classList.add("codeBlock");
-    blockT.appendChild(commitCode);
-    
+    commitCodePre.appendChild(commitCode);
+
     displayDiff(commitCode, data.files[i].patch);
 
   }
