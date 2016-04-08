@@ -72,6 +72,24 @@ pre p {
   color: #ecf0f1;
 }
 
+.change-bar {
+  width: 100%;
+}
+
+.change-bar span {
+  width: 48%;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.change-bar span:first-child {
+  text-align: right;
+}
+
+.change-bar span:last-child {
+  text-align: left;
+}
+
 .scrollBlock {
   overflow-x: scroll;
   width: 100%;

@@ -26,6 +26,13 @@ window.onload = function() {
     addSpan.style.color = "#32c638";
     title.appendChild(addSpan);
 
+    // The number of additions and deletions
+    var changeBar = document.createElement("div");
+    changeBar.innerHTML = displayChange(data.files[i]);
+    changeBar.classList.add("change-bar");
+    title.appendChild(changeBar);
+
+    // Append that shit
     block.appendChild(title);
     cont.appendChild(block);
 
@@ -34,9 +41,11 @@ window.onload = function() {
     blockT.classList.add("scrollBlock");
     block.appendChild(blockT);
 
+    // The <pre> element containing the code
     var commitCodePre = document.createElement("pre");
     blockT.appendChild(commitCodePre);
 
+    // The code
     var commitCode = document.createElement("div");
     commitCode.classList.add("codeBlock");
     commitCodePre.appendChild(commitCode);
@@ -105,6 +114,50 @@ function displayDiff(el, patch) {
   el.appendChild(text);
 }
 
+// Gets the length of the bar indicating the change
+function displayChange(file) {
+  var delSize = file.deletions;
+  var addSize = file.additions;
+  var max = 100;
+
+  // We throttle that shit
+  if(delSize > 100) {
+    if(delSize > addSize) {
+      max = delSize;
+    } else {
+      max = addSize;
+    }
+  }
+  if(addSize > 100) {
+    if(addSize > delSize) {
+      max = addSize;
+    } else {
+      max = delSize;
+    }
+  }
+
+  var delN = Math.round(delSize*20/max);
+  var addN = Math.round(addSize*20/max);
+  var text = '<span style="color: #cc302a;">';
+  // left-pad
+  /*for(var i=0; i < 10-delN; i++) {
+    text+=" ";
+  }*/
+  for(var d=0; d < delN; d++) {
+    text += "=";
+  }
+  text+='</span>|<span style="color: #21c328;">';
+  for(var a=0; a < addN; a++) {
+    text += "=";
+  }
+  /*for(var j=0; j < 10-addN; j++) {
+    text+=" ";
+  }*/
+  text+='</span>';
+
+  return text;
+}
+// left-pad lul
 function createSpace(num) {
   var n=0, str="";
   for(var i=0; i < num.toString().length; i++) {
@@ -116,6 +169,7 @@ function createSpace(num) {
   return str;
 }
 
+// Escape the HTML
 function escapeHtml(unsafe) {
     return unsafe
          .replace(/&/g, "&amp;")
