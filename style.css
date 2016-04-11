@@ -32,12 +32,18 @@ pre {
 
 pre p {
   margin: 0;
-  color: #072762;
+  color: #1e293d;
   padding-left: 8px;
-  border-left: 3px solid #6b7382;
-  background-color: #dee3ee;
+  border-left: 4px solid #a6a8ad;
+  background-color: #e4e5e7;
   min-width: 100%;
   width: auto;
+}
+
+.declaration {
+  color: #143274;
+  background-color: #cbcde8;
+  border-color: #143274;
 }
 
 .addition {

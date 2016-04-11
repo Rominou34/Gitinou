@@ -75,6 +75,18 @@ function displayDiff(el, patch) {
   var line = 0;
   for(var j=0; j < patch.length; j++) {
     if(patch[j] == " " && patch[j-1] == "@" && patch[j-2] == "@" && !cursor) {
+      text.classList.add("declaration");
+      /*
+      * If it's a patch declaration and not a line of code we don't put the
+      * line number at the beginning
+      */
+      while(text.innerHTML.charAt(0) != "@") {
+        var st = text.innerHTML;
+        text.innerHTML = st.slice(1, st.length);
+      }
+      el.innerHTML+="<p> </p><p> </p>";
+
+
       cursor = true;
       for(var k=j; k < patch.length; k++) {
         if(patch[k]==",") {
@@ -85,7 +97,22 @@ function displayDiff(el, patch) {
           num += patch[k];
         }
       }
+    } else {
+      if(patch[j]=="@" && patch[j-1]=="@" && cursor) {
+        j++;
+        text.innerHTML+="@";
+        cursor = false;
+        el.appendChild(text);
+
+        if(line >=1) {
+          text = document.createElement("p");
+          text.innerHTML = line;
+          line++;
+        }
+
+      }
     }
+
     // When we meet a new line, we create a new p element
     if(patch[j] == "\n") {
       cursor = false;
@@ -139,10 +166,7 @@ function displayChange(file) {
   var delN = Math.round(delSize*20/max);
   var addN = Math.round(addSize*20/max);
   var text = '<span style="color: #cc302a;">';
-  // left-pad
-  /*for(var i=0; i < 10-delN; i++) {
-    text+=" ";
-  }*/
+
   for(var d=0; d < delN; d++) {
     text += "=";
   }
@@ -150,9 +174,7 @@ function displayChange(file) {
   for(var a=0; a < addN; a++) {
     text += "=";
   }
-  /*for(var j=0; j < 10-addN; j++) {
-    text+=" ";
-  }*/
+
   text+='</span>';
 
   return text;
