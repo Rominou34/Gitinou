@@ -9,3 +9,20 @@ This serves me as a good way to train about parsers, as I have to parse the patc
 ## What does it do ?
 
 Currently, it parses the data in `data.js`, which is a commit I downloaded from the API ( in order to work locally ), and it puts additions in green, and deletions in red.
+
+## How to use it
+
+Wait till I finish coding it at least :/
+
+## Features
+
+* Parses all infos from a commit and display the changes in a beautiful way
+* Everything works through Javascript:
+  * You can run it everywhere, no need to install anything :D
+  * As the requests come from your IP, you have 60 free requests per hour via the GitHub API
+
+## TODO
+
+* Breadcrumbs allowing you to navigate to the parent folder / repo
+* Display all commits from a repo and let the user choose which one he wants to view
+* Actually use the API instead of data from `data.js`

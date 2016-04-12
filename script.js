@@ -3,6 +3,77 @@ window.onload = function() {
   /*for(var i in data.files) {
     cont.innerHTML += escapeHtml(data.files[i].patch);
   }*/
+  var intro = document.createElement("div");
+
+  var intro_block = document.createElement("div");
+  intro.appendChild(intro_block);
+  /*
+  * We write the text of the commit with the title
+  */
+  var intro_title = "";
+  var intro_ti = document.createElement("h2");
+  var intro_text = document.createElement("p");
+  intro_block.appendChild(intro_ti);
+  intro_block.appendChild(intro_text);
+  for(var ch=0; ch < data.commit.message.length; ch++) {
+    if(data.commit.message[ch]=="\n") {
+      intro_ti.innerHTML = intro_title;
+      intro_text.innerHTML = data.commit.message.slice(ch,data.commit.message.length);
+      break;
+    } else {
+      intro_title += data.commit.message[ch];
+    }
+  }
+
+  /*
+  * We display the stats
+  */
+
+  var intro_stats = document.createElement("div");
+  intro_stats.classList.add("stats_block");
+
+  // Number of files changed
+  var files_changes = document.createElement("p");
+  files_changes.innerHTML = "<b>Files changed:</b> " + data.files.length;
+  intro_stats.appendChild(files_changes);
+
+  // Total changes
+  var total_changes = document.createElement("p");
+  var total_total = document.createElement("span");
+  total_total.innerHTML = "<b>Total changes:</b> " + data.stats.total;
+  total_changes.appendChild(total_total);
+  intro_stats.appendChild(total_changes);
+
+  // Additions
+  var total_add = document.createElement("span");
+  total_add.innerHTML = "<b>Additions:</b> +" + data.stats.additions;
+  total_changes.appendChild(total_add);
+
+  // Deletions
+  var total_del = document.createElement("span");
+  total_del.innerHTML = "<b>Deletions:</b> -" + data.stats.deletions;
+  total_changes.appendChild(total_del);
+
+  intro_block.appendChild(intro_stats);
+  /*
+  * We display the bars representing the additions / deletions
+  */
+  var progressBar = document.createElement("div");
+  intro_block.appendChild(progressBar);
+  progressBar.innerHTML += displayChange(data.stats);
+  progressBar.classList.add("progress-bar");
+
+  /*
+  * We append that shit
+  */
+  intro.classList.add('intro_block');
+  cont.appendChild(intro);
+
+  /*
+  * The main function
+  * It loops through each file and creates the corresponding HTML element
+  * with the corresponding data
+  */
   for(var i in data.files) {
     // The block that will contain everything concerning the commit
     var block = document.createElement("div");

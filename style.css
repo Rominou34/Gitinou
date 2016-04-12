@@ -17,7 +17,62 @@ header {
 #content {
   width: 100%;
   padding: 20px 0px;
+  padding-top: 0;
   background-color: #ecf0f1;
+}
+
+.intro_block {
+  width: 100%;
+  background-color: #c6d6eb;
+  border-bottom: 2px solid #6386c2;
+  font-family: Arial;
+  font-size: 16px;
+}
+
+.intro_block > div {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.intro_block > div > h2 {
+  text-align: center;
+}
+
+.progress-bar {
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.progress-bar span {
+  width: 48%;
+  display: inline-block;
+}
+
+.progress-bar span:first-child {
+  text-align: right;
+}
+
+.stats_block {
+  border-top: 2px solid #276598;
+}
+
+.stats_block p:last-child span {
+  display: block;
+  line-height: 1.5;
+}
+
+.stats_block p:last-child span:nth-child(2) {
+  color: #20983a;
+}
+
+.stats_block p:last-child span:nth-child(3) {
+  color: #a62828;
+}
+
+.stats_block p:last-child span b {
+  color: initial;
 }
 
 div {
@@ -105,4 +160,12 @@ pre p {
   display: inline-block;
   min-width: calc(100% - 11px);
   padding: 12px 0;
+}
+
+@media screen and (max-width: 800px) {
+  .progress-bar,
+  .change-bar,
+  .change-bar span {
+    font-size: 3.25vw;
+  }
 }
